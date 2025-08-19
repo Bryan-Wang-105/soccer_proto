@@ -38,6 +38,7 @@ var is_server = false
 @onready var area_3d: Area3D = $Area3D
 @onready var audio_node: Node3D = $AudioNode
 @onready var sync: MultiplayerSynchronizer = $MultiplayerSynchronizer
+@onready var mesh: MeshInstance3D = $CollisionShape3D/MeshInstance3D
 
 @onready var kick_force_bar: TextureProgressBar = $TextureProgressBar
 @onready var ball_there: MeshInstance2D = $TextureProgressBar/BallThere

@@ -17,45 +17,41 @@ next_scene_packed = ExtResource("2_4q051")
 
 [node name="Lobby Title" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -111.0
-offset_top = -469.0
-offset_right = 96.0
-offset_bottom = -381.0
+offset_left = -103.5
+offset_top = 25.0
+offset_right = 103.5
+offset_bottom = 113.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_font_sizes/font_size = 64
 text = "LOBBY"
 
 [node name="Context" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 13
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
 offset_left = -39.0
 offset_top = 153.0
 offset_right = 37.0
-offset_bottom = -878.0
+offset_bottom = 119.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_font_sizes/font_size = 32
 text = "2 v 2"
 
 [node name="SpectatorList" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -728.0
-offset_top = 900.0
-offset_right = 876.0
-offset_bottom = -131.0
+anchors_preset = -1
+anchor_left = 0.123
+anchor_top = 0.886
+anchor_right = 0.123
+anchor_bottom = 0.886
+offset_left = 0.931
+offset_top = -22.342
+offset_right = 1459.93
+offset_bottom = 22.658
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 32
@@ -63,14 +59,15 @@ text = "2 v 2"
 
 [node name="Spectators" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -919.0
-offset_top = 900.0
-offset_right = -746.0
-offset_bottom = -131.0
+anchors_preset = -1
+anchor_left = 0.063
+anchor_top = 0.886
+anchor_right = 0.063
+anchor_bottom = 0.886
+offset_left = -87.389
+offset_top = 16.658
+offset_right = 85.611
+offset_bottom = -17.342
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 32
@@ -78,14 +75,15 @@ text = "Spectators:"
 
 [node name="HostMessage" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 13
+anchors_preset = -1
 anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_top = 0.529
+anchor_right = 0.501
+anchor_bottom = 0.529
 offset_left = -232.0
-offset_top = 745.0
-offset_right = 236.0
-offset_bottom = -286.0
+offset_top = 217.587
+offset_right = 234.097
+offset_bottom = 183.587
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 32
@@ -93,59 +91,73 @@ text = "Waiting on host to start match"
 
 [node name="JoinRed" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_top = 0.758
+anchor_bottom = 0.758
 offset_left = 256.0
-offset_top = 760.0
+offset_top = 4.27399
 offset_right = 406.0
-offset_bottom = -245.0
+offset_bottom = -3.72601
 grow_vertical = 2
 theme_override_font_sizes/font_size = 28
 text = "Join Team"
 
 [node name="JoinBlue" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = 1512.0
-offset_top = 766.0
-offset_right = 1662.0
-offset_bottom = -239.0
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.764
+anchor_right = 1.0
+anchor_bottom = 0.764
+offset_left = -391.0
+offset_top = 4.29193
+offset_right = -241.0
+offset_bottom = -3.70807
 grow_vertical = 2
 theme_override_font_sizes/font_size = 28
 text = "Join Team"
 
 [node name="StartMatch" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = 872.0
-offset_top = 816.0
-offset_right = 1038.0
-offset_bottom = -189.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.5
+offset_top = 278.5
+offset_right = 85.5
+offset_bottom = 325.5
+grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 28
 text = "Start Match"
 
 [node name="Exit" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 9
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1736.0
-offset_top = 985.0
-offset_right = 1902.0
-offset_bottom = -20.0
-grow_vertical = 2
+offset_left = -206.0
+offset_top = -73.0
+offset_right = -40.0
+offset_bottom = -26.0
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_font_sizes/font_size = 28
 text = "Exit Game
 "
 
 [node name="RedTeam" type="Control" parent="."]
-anchors_preset = 0
+layout_mode = 1
+anchor_top = 0.177
+anchor_bottom = 0.177
 offset_left = 117.0
-offset_top = 176.0
+offset_top = -0.468994
 offset_right = 525.0
-offset_bottom = 711.0
+offset_bottom = 534.531
 
 [node name="RedTeamLabel" type="Label" parent="RedTeam"]
 layout_mode = 1
@@ -172,13 +184,14 @@ offset_bottom = 554.0
 
 [node name="BlueTeam" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 1
 anchor_left = 1.0
+anchor_top = 0.158
 anchor_right = 1.0
+anchor_bottom = 0.158
 offset_left = -532.0
-offset_top = 158.0
+offset_top = 0.473999
 offset_right = -119.0
-offset_bottom = 707.0
+offset_bottom = 549.474
 grow_horizontal = 0
 
 [node name="BlueTeamLabel" type="Label" parent="BlueTeam"]

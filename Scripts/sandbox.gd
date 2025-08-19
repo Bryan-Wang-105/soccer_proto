@@ -74,22 +74,36 @@ func initialize():
 	print("Initializing")
 	var i = 0
 	for player in player_info["RED"]:
+		print("IN RED")
 		var load_player = player_scene.instantiate()
 		load_player.name = str(player)
 		
 		add_child(load_player)
+		
+		var material = StandardMaterial3D.new()
+		load_player.mesh.set_surface_override_material(0, material)
+		
+		material.albedo_color = Color("#7a0d1b")
+		
 		load_player._set_name(player_info[player])
 		load_player.global_position = get_node("Red" + str(i + 1)).global_position
 		#load_player.rotation_degrees.y = -90
 		
 		i += 1
-
+	
 	i = 0
 	for player in player_info["BLUE"]:
+		print("IN BLUE")
 		var load_player = player_scene.instantiate()
 		load_player.name = str(player)
 		
 		add_child(load_player)
+	
+		var material = StandardMaterial3D.new()
+		load_player.mesh.set_surface_override_material(0, material)
+		
+		material.albedo_color = Color("#0e3771")
+		
 		load_player._set_name(player_info[player])
 		load_player.global_position = get_node("Blue" + str(i + 1)).global_position
 		load_player.rotation_degrees.y = 180
