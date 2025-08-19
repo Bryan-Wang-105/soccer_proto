@@ -60,6 +60,7 @@ func _ready() -> void:
 		label.queue_free()
 		return
 	
+	kick_force_bar.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	camera_3d.current = true
 	print("READY2")

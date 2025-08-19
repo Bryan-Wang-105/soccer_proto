@@ -2,15 +2,14 @@ extends Node3D
 
 # --- Node References ---
 @onready var input: AudioStreamPlayer3D = $Input
-@onready var output: AudioStreamPlayer3D = $Output
 @onready var player = $"../"
+var output
 
 # --- Exported Properties ---
 @export var outputPath: NodePath
 
 # --- Audio Capture ---
 var mic_capture: AudioEffectOpusChunked
-var playback
 
 # --- Networking Stats ---
 var packets_received: int = 0
@@ -20,7 +19,7 @@ var packets_sent: int = 0
 var tick: float = 0.0
 
 # --- Thresholds ---
-var inputThreshold: float = 0.004
+var inputThreshold: float = 0.005
 
 # --- Internal References ---
 var index
@@ -44,23 +43,20 @@ func setupAudio(id):
 		
 		mic_capture = AudioServer.get_bus_effect(index, 0)
 		_configure_mic_capture()
-		
-		# Remove output for local player
-		output.queue_free()
 	else:
 		# Remove input for listeners
 		input.queue_free()
-
-		# Start playback
-		get_node(outputPath).play()
 		
-		await get_tree().process_frame
-		playback = get_node(outputPath).get_stream_playback()
+		# Need to create separate audio stream to not share resource
+		output =  AudioStreamPlayer3D.new()
+		output.autoplay = true
+		output.stream = AudioStreamOpusChunked.new()
+		add_child(output)
 
 # Configure Opus microphone settings
 func _configure_mic_capture():
 	mic_capture.audiosamplerate = 48000    # Match input to Opus rate
-	mic_capture.opusbitrate = 24000        # Try 8000–32000; higher = better
+	mic_capture.opusbitrate = 32000        # Try 8000–32000; higher = better
 	mic_capture.opusframesize = 960        # Match frame size
 	mic_capture.audiosamplesize = 960      # Higher = better quality (0–10)
 	mic_capture.opuscomplexity = 8         # Keep this for voice
