@@ -1,0 +1,157 @@
+[gd_scene load_steps=13 format=3 uid="uid://d323ws0fmhjv4"]
+
+[ext_resource type="Script" uid="uid://mrmy5taeinu6" path="res://Scripts/sandbox.gd" id="1_2b6ht"]
+[ext_resource type="Texture2D" uid="uid://bnid268jm5rbe" path="res://Assets/Name_1m x 1m(1).png" id="1_3h184"]
+[ext_resource type="PackedScene" uid="uid://ja13r6fvdujc" path="res://Scenes/player.tscn" id="2_s2tkr"]
+[ext_resource type="PackedScene" uid="uid://bi1rutps24bok" path="res://Scenes/Goal.tscn" id="2_y0mvb"]
+[ext_resource type="PackedScene" uid="uid://qi3pmgdvsn51" path="res://Scenes/ball.tscn" id="3_1cu7a"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d7bho"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_2b6ht"]
+sky_material = SubResource("ProceduralSkyMaterial_d7bho")
+
+[sub_resource type="Environment" id="Environment_y0mvb"]
+background_mode = 2
+sky = SubResource("Sky_2b6ht")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d7bho"]
+albedo_color = Color(0.054902, 0.207843, 0.054902, 1)
+uv1_triplanar = true
+uv2_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cojph"]
+albedo_texture = ExtResource("1_3h184")
+uv1_triplanar = true
+uv2_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s2tkr"]
+albedo_color = Color(0.689174, 0, 0.112203, 1)
+albedo_texture = ExtResource("1_3h184")
+uv1_triplanar = true
+uv2_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1cu7a"]
+albedo_color = Color(0.465767, 0.57554, 1, 1)
+albedo_texture = ExtResource("1_3h184")
+uv1_triplanar = true
+uv2_world_triplanar = true
+
+[node name="Sandbox" type="Node3D"]
+script = ExtResource("1_2b6ht")
+player_scene = ExtResource("2_s2tkr")
+ball_scene = ExtResource("3_1cu7a")
+
+[node name="RedGoal" parent="." instance=ExtResource("2_y0mvb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.101383, 25.3693)
+isRed = true
+
+[node name="BlueGoal" parent="." instance=ExtResource("2_y0mvb")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.163889, -29.0637)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_y0mvb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.892933, -0.450029, 0.0120204, 0.00475857, 0.0172645, 0.99984, -0.450164, 0.892847, -0.0132746, 0, 19.4314, 0)
+shadow_enabled = true
+
+[node name="Field" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.644226)
+use_collision = true
+size = Vector3(35, 0.1, 94.1432)
+material = SubResource("StandardMaterial3D_d7bho")
+
+[node name="WallRight" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.751, 12.6766, -0.613373)
+use_collision = true
+size = Vector3(1.49792, 25.2948, 96.3046)
+material = SubResource("StandardMaterial3D_cojph")
+
+[node name="WallLeft" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.752, 13.6565, -0.758972)
+use_collision = true
+size = Vector3(1.49792, 27.2546, 95.7535)
+material = SubResource("StandardMaterial3D_cojph")
+
+[node name="RedWall" type="CSGBox3D" parent="."]
+transform = Transform3D(0.0040142, 0, -0.999992, 0, 1, 0, 0.999992, 0, 0.0040142, -10.0193, 13.4409, 26.2908)
+use_collision = true
+size = Vector3(1.49792, 26.8233, 14.9458)
+material = SubResource("StandardMaterial3D_s2tkr")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="RedWall"]
+transform = Transform3D(0.999992, 0, -0.00401424, 0, 1, 0, 0.00401424, 0, 0.999992, 0.0801849, -0.546, -19.9752)
+use_collision = true
+size = Vector3(1.49792, 25.7313, 14.9458)
+material = SubResource("StandardMaterial3D_s2tkr")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="RedWall"]
+transform = Transform3D(0.999992, 0, -0.00401424, 0, 1, 0, 0.00401424, 0, 0.999992, 1.58605, -0.0166998, -8.92761)
+use_collision = true
+size = Vector3(1.49792, 26.79, 14.9458)
+material = SubResource("StandardMaterial3D_s2tkr")
+
+[node name="BlueWall" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.0163878, 0, -0.999866, 0, 1, 0, 0.999866, 0, -0.0163878, 9.99854, 12.7736, -29.6558)
+use_collision = true
+size = Vector3(1.49792, 25.4888, 14.9458)
+material = SubResource("StandardMaterial3D_1cu7a")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="BlueWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76837e-05, 0.0426006, 19.9753)
+use_collision = true
+size = Vector3(1.49792, 25.5739, 14.9458)
+material = SubResource("StandardMaterial3D_1cu7a")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="BlueWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5502, -0.115999, 8.93388)
+use_collision = true
+size = Vector3(1.49792, 25.2569, 14.9458)
+material = SubResource("StandardMaterial3D_1cu7a")
+
+[node name="BallSpawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12315, 15.7853, -0.121811)
+
+[node name="Red1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.10815, 0, 11.1011)
+
+[node name="Red2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.02126, 0, 11.1011)
+
+[node name="Blue1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.10815, 0, -11.1833)
+
+[node name="Blue2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.02126, 0, -11.1833)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -264.0
+offset_top = 29.0
+offset_right = 269.0
+offset_bottom = 113.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "0 - 0"

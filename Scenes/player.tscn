@@ -1,0 +1,156 @@
+[gd_scene load_steps=18 format=3 uid="uid://ja13r6fvdujc"]
+
+[ext_resource type="Script" uid="uid://l7g3xpqcjh1d" path="res://Scripts/player.gd" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://cseox78vay5q4" path="res://Scripts/audio_node.gd" id="2_cvnsp"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gyay1"]
+points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cjd0b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v0iea"]
+
+[sub_resource type="Gradient" id="Gradient_cvnsp"]
+offsets = PackedFloat32Array(0, 0.461216, 0.639413, 0.716981, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0.67451, 0.67451, 0.67451, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6t5aa"]
+gradient = SubResource("Gradient_cvnsp")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_vgqql"]
+offsets = PackedFloat32Array(0.406709, 0.425577, 0.524109, 0.631027, 1)
+colors = PackedColorArray(0, 0.678431, 0, 0, 0, 0.689119, 0, 1, 0, 0.705864, 0, 1, 0.67451, 0.67451, 0.67451, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fkybt"]
+gradient = SubResource("Gradient_vgqql")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_cvnsp"]
+
+[sub_resource type="Gradient" id="Gradient_6t5aa"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.239216, 0.6, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vgqql"]
+gradient = SubResource("Gradient_6t5aa")
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_v0iea"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_cvnsp"]
+
+[sub_resource type="AudioStreamOpusChunked" id="AudioStreamOpusChunked_cvnsp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cvnsp"]
+size = Vector3(0.7, 0.1, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6t5aa"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="player" type="CharacterBody3D"]
+script = ExtResource("1_v0iea")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.889402, 0)
+shape = SubResource("ConvexPolygonShape3D_gyay1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("CapsuleMesh_cjd0b")
+skeleton = NodePath("../..")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48838, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.45428)
+fov = 101.7
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.518243, -0.967791)
+shape = SubResource("BoxShape3D_v0iea")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 4
+texture_under = SubResource("GradientTexture2D_6t5aa")
+texture_progress = SubResource("GradientTexture2D_fkybt")
+metadata/_edit_use_anchors_ = true
+
+[node name="BallThere" type="MeshInstance2D" parent="TextureProgressBar"]
+visible = false
+position = Vector2(32, 33)
+scale = Vector2(23.5261, 23.5)
+mesh = SubResource("SphereMesh_cvnsp")
+texture = SubResource("GradientTexture1D_vgqql")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.225
+anchor_top = 0.5
+anchor_right = 4.55
+anchor_bottom = 0.5
+offset_top = -9.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BALL IN RANGE: FALSE"
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.13786, 0)
+billboard = 1
+text = "TEMP NAME"
+font_size = 45
+outline_size = 16
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_v0iea")
+
+[node name="AudioNode" type="Node3D" parent="."]
+script = ExtResource("2_cvnsp")
+outputPath = NodePath("Output")
+
+[node name="Input" type="AudioStreamPlayer3D" parent="AudioNode"]
+stream = SubResource("AudioStreamMicrophone_cvnsp")
+bus = &"MicrophoneBus"
+
+[node name="Output" type="AudioStreamPlayer3D" parent="AudioNode"]
+stream = SubResource("AudioStreamOpusChunked_cvnsp")
+autoplay = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43946, -0.468383)
+mesh = SubResource("BoxMesh_cvnsp")
+surface_material_override/0 = SubResource("StandardMaterial3D_6t5aa")

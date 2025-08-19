@@ -1,0 +1,100 @@
+[gd_scene load_steps=3 format=3 uid="uid://deqri2vvedoh0"]
+
+[ext_resource type="Script" uid="uid://bevq4j24yncol" path="res://Scripts/UI Scripts/join_menu.gd" id="1_pahev"]
+[ext_resource type="PackedScene" uid="uid://cnwx7xtxrwbjf" path="res://Scenes/UI Scenes/lobby.tscn" id="2_qa1hb"]
+
+[node name="JoinMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pahev")
+next_scene_packed = ExtResource("2_qa1hb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = 21.0
+offset_right = 56.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Host" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "HOST MATCH"
+
+[node name="Join" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "JOIN MATCH"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -91.0
+offset_right = 55.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "SOCCER CLUB"
+
+[node name="loading" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = 180.0
+offset_right = 85.0
+offset_bottom = 251.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Creating lobby, please wait. . ."
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = 115.0
+offset_right = 110.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Must enter player name"
+
+[connection signal="pressed" from="VBoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="VBoxContainer/Join" to="." method="_on_join_pressed"]
